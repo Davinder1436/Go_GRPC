@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option go_package = "./proto";
+
+package example;
+
+service ExampleService {
+  rpc UnaryCall(Input) returns (Output);
+  rpc ClientStreamingCall(stream Input) returns (Output);
+  rpc ServerStreamingCall(Input) returns (stream Output);
+  rpc BidirectionalStreamingCall(stream Input) returns (stream Output);
+}
+
+message Input {
+  string message = 1;
+}
+
+message Output {
+  string response = 1;
+}
